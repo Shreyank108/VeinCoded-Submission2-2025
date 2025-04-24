@@ -172,3 +172,46 @@ t2.to("#page_tran", {
   duration:2
 },"b")
 
+const inner = document.querySelector(".cursor.inner");
+const middle = document.querySelector(".cursor.middle");
+const outer = document.querySelector(".cursor.outer");
+
+let mouseX = 0, mouseY = 0;
+let midX = 0, midY = 0;
+let outX = 0, outY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  inner.style.left = `${mouseX}px`;
+  inner.style.top = `${mouseY}px`;
+});
+
+function animate() {
+  // Smooth trailing
+  midX += (mouseX - midX) * 0.15;
+  midY += (mouseY - midY) * 0.15;
+  outX += (mouseX - outX) * 0.08;
+  outY += (mouseY - outY) * 0.08;
+
+  middle.style.left = `${midX}px`;
+  middle.style.top = `${midY}px`;
+  outer.style.left = `${outX}px`;
+  outer.style.top = `${outY}px`;
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Optional: click effect (scale on click)
+document.addEventListener("mousedown", () => {
+  inner.style.transform = "translate(-50%, -50%) scale(0.8)";
+  middle.style.transform = "translate(-50%, -50%) scale(1.3)";
+  outer.style.transform = "translate(-50%, -50%) scale(1.6)";
+});
+document.addEventListener("mouseup", () => {
+  inner.style.transform = "translate(-50%, -50%) scale(1)";
+  middle.style.transform = "translate(-50%, -50%) scale(1)";
+  outer.style.transform = "translate(-50%, -50%) scale(1)";
+});
+
