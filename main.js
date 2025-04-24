@@ -56,7 +56,7 @@ function initThreeScene() {
   controls.enableZoom = false;
 
   const loader = new GLTFLoader();
-  loader.load('/model/apple_vision_pro.glb', (gltf) => {
+  loader.load('model/apple_vision_pro.glb', (gltf) => {
     model = gltf.scene;
 
     const parentWidth = canvas.parentElement.clientWidth;
