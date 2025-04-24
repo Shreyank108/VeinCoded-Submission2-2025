@@ -810,6 +810,30 @@ nav button:hover #page1_button_cir2_button {
   margin-bottom: var(--spacing-sm);
 }
 
+
+.hover-underline {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 8px #00ffffaa, 0 0 12px #ff00ffaa;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   :root {
@@ -817,6 +841,21 @@ nav button:hover #page1_button_cir2_button {
     --font-xl: 4rem;
     --font-lg: 2.2rem;
   }
+ 
+  .cursor.inner {
+    display: none;
+  }
+  
+  /* Middle circle */
+  .cursor.middle {
+    display: none;
+  }
+  
+  /* Outer circle */
+  .cursor.outer {
+    display: none;
+  }
+
 
   nav {
     width: 95vw;
@@ -939,10 +978,8 @@ nav button:hover #page1_button_cir2_button {
     border: 2px solid rgb(252, 252, 252);
     padding: 5px 9px;
   }
-  
-  .page2_image_errect_text:hover {
-    border : 2px solid rgb(255, 255, 255); 
-    
+  #page_transition2 p{ 
+        width: 10vw;
   }
 
   /* Page 3 Mobile Styles */
